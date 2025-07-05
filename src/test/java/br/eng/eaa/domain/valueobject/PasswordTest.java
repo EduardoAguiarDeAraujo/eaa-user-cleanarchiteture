@@ -3,6 +3,7 @@ package br.eng.eaa.domain.valueobject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PasswordTest {
@@ -12,7 +13,9 @@ public class PasswordTest {
     public void validarSenhaCorreta(){
         String senhaValida = "MinhaSenhaForte1!";
         Password password = new Password(senhaValida);
-        assert password != null;
+        assertNotNull(password);
+        assertNotNull(password.toString());
+        System.out.println("Senha válida: " + password.toString());
     }
     @Test
     @DisplayName("Deve lançar IllegalArgumentException quando a senha menor que 8 caracteres.")

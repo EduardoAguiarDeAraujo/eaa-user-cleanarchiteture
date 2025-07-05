@@ -3,7 +3,7 @@ package br.eng.eaa.domain.entity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
 
@@ -13,8 +13,9 @@ public class UserTest {
 
         User user = new User("Eduardo", "MInhaSenhaForte1#");
 
-        assert user != null;
-        assert user.getName().equals("Eduardo");
+        assertNotNull(user);
+        assertNotNull(user.getId());
+        assertEquals("Eduardo", user.getName());
 
         System.out.println("ID: " + user.getId() + " - " + user.getName());
     }

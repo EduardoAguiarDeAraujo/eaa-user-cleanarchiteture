@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 public class UserControllerTest {
 
     IUserGatewayStub gateway = new IUserGatewayStub();
@@ -18,8 +21,8 @@ public class UserControllerTest {
     public void save(){
         UserRequest userRequest = new UserRequest("Eduardo","MinhaSenhaForte#10");
         UserResponse userResponse = userController.save(userRequest);
-        assert userResponse != null;
-        assert userResponse.getName().equals("Eduardo");
+        assertNotNull(userResponse);
+        assertEquals("Eduardo", userResponse.getName());
         System.out.printf("ID: " + userResponse.getId() + " - " + userResponse.getName());
     }
 
@@ -28,8 +31,10 @@ public class UserControllerTest {
     public void update(){
         UserRequest userRequest = new UserRequest(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"), "Katia");
         UserResponse userResponse = userController.update(userRequest);
-        assert userResponse != null;
-        assert userResponse.getName().equals("Katia");
+        assertNotNull(userResponse);
+        assertEquals(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"), userResponse.getId());
+        assertNotNull(userResponse.getName());
+        assertEquals("Katia", userResponse.getName());
         System.out.printf("ID: " + userResponse.getId() + " - " + userResponse.getName());
     }
 
@@ -37,8 +42,8 @@ public class UserControllerTest {
     @DisplayName("Deve encontrar um usuário pelo id.")
     public void findById(){
         UserResponse userResponse = userController.findById(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"));
-        assert userResponse != null;
-        assert userResponse.getName().equals("Katia");
+        assertNotNull(userResponse);
+        assertEquals("Katia", userResponse.getName());
         System.out.printf("ID: " + userResponse.getId() + " - " + userResponse.getName());
     }
 
@@ -46,6 +51,8 @@ public class UserControllerTest {
     @DisplayName("Deve excluir um usuário pelo id.")
     public void delete(){
         Boolean isDeleted = userController.delete(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"));
-        assert isDeleted.equals(true);
+        assertNotNull(isDeleted);
+        assertEquals(true, isDeleted);
+        System.out.printf("Usuário excluído: " + isDeleted);
     }
 }
