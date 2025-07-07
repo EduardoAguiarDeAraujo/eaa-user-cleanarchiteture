@@ -18,8 +18,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
         run: |
           mvn sonar:sonar \
-            -Dsonar.projectKey=sonnesen_fiap-product-api \
-            -Dsonar.organization=sonnesen \
+            -Dsonar.projectKey=eaa-user-cleanarchiteture \
+            -Dsonar.organization=eduardoaguiardearaujo \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
       - name: Upload Test Results
