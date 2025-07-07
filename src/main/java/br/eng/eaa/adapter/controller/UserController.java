@@ -29,7 +29,7 @@ public class UserController {
     }
 
     public UserResponse findById(UUID id){
-        return userInput.finbById(id);
+        return userInput.findById(id);
     }
 
     public List<UserResponse> findAll(){

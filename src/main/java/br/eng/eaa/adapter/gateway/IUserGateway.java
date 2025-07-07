@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface IUserGateway {
     User save(User user);
     User update(User user);
-    User fingById(UUID id);
+    User findById(UUID id);
     List<User> findAll();
     Boolean delete(UUID id);
 }

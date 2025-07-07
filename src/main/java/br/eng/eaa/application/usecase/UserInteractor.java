@@ -39,8 +39,8 @@ public class UserInteractor implements UserInput {
     }
 
     @Override
-    public UserResponse finbById(UUID id) {
-        User user = userGateway.fingById(id);
+    public UserResponse findById(UUID id) {
+        User user = userGateway.findById(id);
         return userOutput.execute(user);
     }
 

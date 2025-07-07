@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface UserInput {
     UserResponse save(UserRequest userRequest);
     UserResponse update(UserRequest userRequest);
-    UserResponse finbById(UUID id);
+    UserResponse findById(UUID id);
     List<UserResponse> findAll();
     Boolean delete(UUID id);
 }

@@ -2,6 +2,8 @@ package br.eng.eaa.adapter.gateway;
 
 import br.eng.eaa.domain.entity.User;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,13 +22,18 @@ public class IUserGatewayStub implements IUserGateway{
     }
 
     @Override
-    public User fingById(UUID id) {
+    public User findById(UUID id) {
         return new User(id, "Katia");
     }
 
     @Override
     public List<User> findAll() {
-        return List.of();
+        List<User> users = new ArrayList<>();
+        users.add(new User(UUID.randomUUID(), "Katia"));
+        users.add(new User(UUID.randomUUID(), "Eduardo"));
+        users.add(new User(UUID.randomUUID(), "Rebeca"));
+
+        return users;
     }
 
     @Override

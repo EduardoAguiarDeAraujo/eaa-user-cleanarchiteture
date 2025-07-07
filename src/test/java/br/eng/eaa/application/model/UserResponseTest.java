@@ -11,13 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserResponseTest {
 
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
 
     @Test
     @DisplayName("Deve criar um usuário com ID e nome válidos")
