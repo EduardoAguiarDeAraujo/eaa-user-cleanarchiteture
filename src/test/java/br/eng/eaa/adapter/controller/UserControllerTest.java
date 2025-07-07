@@ -21,7 +21,6 @@ public class UserControllerTest {
     public void setUp() {
         IUserGatewayStub gateway = new IUserGatewayStub();
         userController = new UserController(gateway);
-
     }
 
     @AfterEach
@@ -36,7 +35,7 @@ public class UserControllerTest {
         UserResponse userResponse = userController.save(userRequest);
         assertNotNull(userResponse);
         assertEquals("Eduardo", userResponse.getName());
-        System.out.printf("ID: " + userResponse.getId() + " - " + userResponse.getName());
+        System.out.printf("ID: %s - %s ", userResponse.getId(), userResponse.getName());
     }
 
     @Test
@@ -48,7 +47,7 @@ public class UserControllerTest {
         assertEquals(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"), userResponse.getId());
         assertNotNull(userResponse.getName());
         assertEquals("Katia", userResponse.getName());
-        System.out.printf("ID: " + userResponse.getId() + " - " + userResponse.getName());
+        System.out.printf("ID: %s - %s ", userResponse.getId(), userResponse.getName());
     }
 
     @Test
@@ -57,7 +56,7 @@ public class UserControllerTest {
         UserResponse userResponse = userController.findById(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"));
         assertNotNull(userResponse);
         assertEquals("Katia", userResponse.getName());
-        System.out.printf("ID: " + userResponse.getId() + " - " + userResponse.getName());
+        System.out.printf("ID: %s - %s ", userResponse.getId(), userResponse.getName());
     }
 
     @Test
@@ -66,6 +65,6 @@ public class UserControllerTest {
         Boolean isDeleted = userController.delete(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"));
         assertNotNull(isDeleted);
         assertEquals(true, isDeleted);
-        System.out.printf("Usuário excluído: " + isDeleted);
+        System.out.printf("Usuário excluído: %s", isDeleted);
     }
 }

@@ -19,7 +19,7 @@ public class UserTest {
         assertNotNull(user.getId());
         assertEquals("Eduardo", user.getName());
 
-        System.out.println("ID: " + user.getId() + " - " + user.getName());
+        System.out.println("ID: %d - %s  " + user.getId() + " - " + user.getName());
     }
     @Test
     @DisplayName("Deve retornar um erro ao criar usuário com nome nulo")

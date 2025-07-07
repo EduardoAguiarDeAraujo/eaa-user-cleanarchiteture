@@ -28,6 +28,9 @@ class UserInteractorTest {
 
     @AfterEach
     void tearDown() {
+        userOutput = null;
+        userGateway = null;
+        System.out.println("Limpeza após os testes concluída.");
     }
 
     @Test

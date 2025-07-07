@@ -17,6 +17,7 @@ class UserRequestTest {
         assertNotNull(userRequest);
         assertEquals("Alice", userRequest.getName(), "O nome do usuário deve ser 'Alice'");
         assertEquals("StrongPassword123#", userRequest.getPassword(), "A senha do usuário deve ser 'StrongPassword123#'");
+
         System.out.println("Usuário criado com sucesso: " + userRequest.getName());
     }
 

@@ -19,7 +19,7 @@ class UserResponseTest {
         assertNotNull(userResponse);
         assertEquals(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"), userResponse.getId());
         assertEquals("Katia", userResponse.getName());
-        System.out.println("ID: " + userResponse.getId() + " - " + userResponse.getName());
+        System.out.printf("ID: %s - %s%n", userResponse.getId(), userResponse.getName());
     }
 
     @Test
@@ -29,7 +29,6 @@ class UserResponseTest {
         assertThrows(IllegalArgumentException.class, () -> new UserResponse(invalidId, "Katia"),
                 "Deveria lançar IllegalArgumentException para ID nulo");
         System.out.println("Exceção lançada corretamente para ID nulo.");
-
     }
 
     @Test
