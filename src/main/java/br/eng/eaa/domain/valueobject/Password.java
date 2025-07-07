@@ -26,6 +26,7 @@ public class Password {
      * - Contém pelo menos um caractere especial (!@#$%^&*()_+-=[]{}|;:',.<>?).
      */
     private boolean isValid(String password){
+
         // Mínimo de 8 caracteres
         if (password.length() < 8) {
             return false;
@@ -55,10 +56,9 @@ public class Password {
         Matcher specialCharMatcher = specialCharPattern.matcher(password);
         if (!specialCharMatcher.matches()) {
             return false;
-        } else {
-            return true;
         }
         // Se todas as regras forem atendidas, a senha é válida
+        return true;
     }
 
     @Override
