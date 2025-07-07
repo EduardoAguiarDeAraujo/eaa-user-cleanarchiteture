@@ -65,7 +65,7 @@ class UserInteractorTest {
         assertNotNull(userResponse);
         assertEquals(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"), userResponse.getId());
         assertEquals("Katia", userResponse.getName());
-        System.out.printf("ID: " + userResponse.getId() + " - " + userResponse.getName());
+        System.out.printf("ID: %s - %s", userResponse.getId(), userResponse.getName());
     }
 
     @Test
@@ -76,7 +76,7 @@ class UserInteractorTest {
 
         assertNotNull(userResponse);
         assertEquals("Katia", userResponse.getName());
-        System.out.printf("ID: " + userResponse.getId() + " - " + userResponse.getName());
+        System.out.printf("ID: %s - %s", userResponse.getId(), userResponse.getName());
     }
 
     @Test

@@ -3,7 +3,6 @@ package br.eng.eaa.adapter.gateway;
 import br.eng.eaa.domain.entity.User;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 

@@ -13,12 +13,12 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class UserControllerTest {
+class UserControllerTest {
 
     private UserController userController;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         IUserGatewayStub gateway = new IUserGatewayStub();
         userController = new UserController(gateway);
     }
@@ -30,7 +30,7 @@ public class UserControllerTest {
 
     @Test
     @DisplayName("Deve salvar um usuário")
-    public void save(){
+    void save(){
         UserRequest userRequest = new UserRequest("Eduardo","MinhaSenhaForte#10");
         UserResponse userResponse = userController.save(userRequest);
         assertNotNull(userResponse);
@@ -40,7 +40,7 @@ public class UserControllerTest {
 
     @Test
     @DisplayName("Deve atualizar um usuário")
-    public void update(){
+    void update(){
         UserRequest userRequest = new UserRequest(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"), "Katia");
         UserResponse userResponse = userController.update(userRequest);
         assertNotNull(userResponse);
@@ -52,7 +52,7 @@ public class UserControllerTest {
 
     @Test
     @DisplayName("Deve encontrar um usuário pelo id.")
-    public void findById(){
+    void findById(){
         UserResponse userResponse = userController.findById(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"));
         assertNotNull(userResponse);
         assertEquals("Katia", userResponse.getName());
@@ -61,7 +61,7 @@ public class UserControllerTest {
 
     @Test
     @DisplayName("Deve excluir um usuário pelo id.")
-    public void delete(){
+    void delete(){
         Boolean isDeleted = userController.delete(UUID.fromString("e7007913-6fef-4d5d-9b29-ed68af616ffa"));
         assertNotNull(isDeleted);
         assertEquals(true, isDeleted);
@@ -70,7 +70,7 @@ public class UserControllerTest {
 
     @Test
     @DisplayName("Deve listar todos os usuários.")
-    public void findAll() {
+    void findAll() {
         var users = userController.findAll();
         assertNotNull(users);
         assertEquals(3, users.size());

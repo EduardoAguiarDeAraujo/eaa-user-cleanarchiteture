@@ -1,17 +1,16 @@
 package br.eng.eaa.domain.entity;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UserTest {
+class UserTest {
 
 
     @Test
     @DisplayName("Deve retornar um usuário válido")
-    public void createUserValido() {
+    void createUserValido() {
 
         User user = new User("Eduardo", "MInhaSenhaForte1#");
 
@@ -26,43 +25,43 @@ public class UserTest {
     }
     @Test
     @DisplayName("Deve retornar um erro ao criar usuário com nome nulo")
-    public void createUserInvalido() {
+    void createUserInvalido() {
         String nameInvalid = null;
         assertThrows(IllegalArgumentException.class, () -> new User(nameInvalid, "MInhaSenhaForte1"));
     }
     @Test
     @DisplayName("Deve retornar um erro ao criar usuário com nome vazio")
-    public void createUserWithNameVazio() {
+    void createUserWithNameVazio() {
         String nameInvalid = "";
         assertThrows(IllegalArgumentException.class, () -> new User(nameInvalid, "MInhaSenhaForte1"));
     }
     @Test
     @DisplayName("Deve retornar um erro ao criar usuário com nome nulo")
-    public void createUserWithNameNulo() {
+    void createUserWithNameNulo() {
         String nameInvalid = null;
         assertThrows(IllegalArgumentException.class, () -> new User(nameInvalid, "MInhaSenhaForte1"));
     }
     @Test
     @DisplayName("Deve retornar um erro ao criar usuário com senha nula")
-    public void createUserWithPasswordNulo() {
+    void createUserWithPasswordNulo() {
         String passwordInvalid = null;
         assertThrows(IllegalArgumentException.class, () -> new User("Eduardo", passwordInvalid));
     }
     @Test
     @DisplayName("Deve retornar um erro ao criar usuário com senha vazia")
-    public void createUserWithPasswordVazio() {
+    void createUserWithPasswordVazio() {
         String passwordInvalid = "";
         assertThrows(IllegalArgumentException.class, () -> new User("Eduardo", passwordInvalid));
     }
     @Test
     @DisplayName("Deve retornar um erro ao criar usuário com senha inválida")
-    public void createUserWithPasswordInvalida() {
+    void createUserWithPasswordInvalida() {
         String passwordInvalid = "12345";
         assertThrows(IllegalArgumentException.class, () -> new User("Eduardo", passwordInvalid));
     }
     @Test
     @DisplayName("Deve retornar um string quando chamar toString()")
-    public void toStringTest() {
+    void toStringTest() {
         User user = new User("Eduardo", "MInhaSenhaForte1#");
         String expected = "User{name='Eduardo', id=" + user.getId() + '}';
         assertEquals(expected, user.toString());
@@ -71,7 +70,7 @@ public class UserTest {
     }
     @Test
     @DisplayName("Deve retornar um hashCode válido")
-    public void hashCodeTest() {
+    void hashCodeTest() {
         User user1 = new User("Eduardo", "MInhaSenhaForte1#");
         User user2 = new User(user1.getId(), "Eduardo");
 
@@ -80,41 +79,41 @@ public class UserTest {
     }
     @Test
     @DisplayName("Deve retornar true quando comparar dois usuários com o mesmo ID")
-    public void equalsTest() {
+    void equalsTest() {
         User user1 = new User("Eduardo", "MInhaSenhaForte1#");
         User user2 = new User(user1.getId(), "Eduardo");
 
-        assertTrue(user1.equals(user2), "Users with the same ID should be equal");
+        assertEquals(true, user1.equals(user2), "Users with the same ID should be equal");
         System.out.printf("Equals: %b%n", user1.equals(user2));
     }
     @Test
     @DisplayName("Deve retornar false quando comparar dois usuários com IDs diferentes")
-    public void equalsTestComIdDiferente() {
+    void equalsTestComIdDiferente() {
         User user1 = new User("Eduardo", "MInhaSenhaForte1#");
         User user2 = new User("Katia", "MInhaSenhaForte1#");
-        assertFalse(user1.equals(user2), "Users with different IDs should not be equal");
+        assertEquals(false, user1.equals(user2), "Users with different IDs should not be equal");
     }
     @Test
     @DisplayName("Deve retornar false quando comparar um usuário com null")
-    public void equalsTestComNull() {
+    void equalsTestComNull() {
         User user = new User("Eduardo", "MInhaSenhaForte1#");
-        assertFalse(user.equals(null), "User should not be equal to null");
+        assertEquals(false, user.equals(null), "User should not be equal to null");
         System.out.printf("Equals com null: %b%n", user.equals(null));
     }
     @Test
     @DisplayName("Deve retornar false quando comparar um usuário com um objeto de tipo diferente")
-    public void equalsTestComObjetoDiferente() {
+    void equalsTestComObjetoDiferente() {
         User user = new User("Eduardo", "MInhaSenhaForte1#");
         String differentTypeObject = "This is not a User";
-        assertFalse(user.equals(differentTypeObject), "User should not be equal to an object of a different type");
+        assertEquals(false, user.equals(differentTypeObject), "User should not be equal to an object of a different type");
         System.out.printf("Equals com objeto diferente: %b%n", user.equals(differentTypeObject));
     }
     @Test
     @DisplayName("Deve retornar false quando comparar um usuário com um objeto nulo")
-    public void equalsTestComObjetoNulo() {
+    void equalsTestComObjetoNulo() {
         User user = new User("Eduardo", "MInhaSenhaForte1#");
         Object nullObject = null;
-        assertFalse(user.equals(nullObject), "User should not be equal to a null object");
+        assertEquals(false, user.equals(nullObject), "User should not be equal to a null object");
         System.out.printf("Equals com objeto nulo: %b%n", user.equals(nullObject));
     }
 }
