@@ -9,6 +9,12 @@ public class UserRequest {
     private String password;
 
     public UserRequest(String name, String password){
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name is empty or null");
+        }
+        if (password == null || password.isEmpty()) {
+            throw new IllegalArgumentException("Password is empty or null");
+        }
         this.name = name;
         this.password = password;
     }

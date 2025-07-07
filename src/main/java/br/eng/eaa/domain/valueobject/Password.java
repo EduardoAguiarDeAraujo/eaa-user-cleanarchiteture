@@ -25,7 +25,7 @@ public class Password {
      * - Contém pelo menos um número.
      * - Contém pelo menos um caractere especial (!@#$%^&*()_+-=[]{}|;:',.<>?).
      */
-    private Boolean isValid(String password){
+    private boolean isValid(String password){
         // Mínimo de 8 caracteres
         if (password.length() < 8) {
             return false;
@@ -43,7 +43,8 @@ public class Password {
             return false;
         }
         // Pelo menos um número
-        Pattern digitPattern = Pattern.compile(".*[0-9].*");
+        Pattern digitPattern = Pattern.compile(".*[\\d].*");
+//        Pattern digitPattern = Pattern.compile(".*[0-9].*");
         Matcher digitMatcher = digitPattern.matcher(password);
         if (!digitMatcher.matches()) {
             return false;
@@ -54,9 +55,10 @@ public class Password {
         Matcher specialCharMatcher = specialCharPattern.matcher(password);
         if (!specialCharMatcher.matches()) {
             return false;
+        } else {
+            return true;
         }
         // Se todas as regras forem atendidas, a senha é válida
-        return true;
     }
 
     @Override

@@ -16,13 +16,12 @@ public class IUserGatewayStub implements IUserGateway{
     @Override
     public User update(User user) {
         User userUpdated = new User(user.getId(), user.getName());
-        return user;
+        return userUpdated;
     }
 
     @Override
     public User fingById(UUID id) {
-        User user = new User(id, "Katia");
-        return user;
+        return new User(id, "Katia");
     }
 
     @Override

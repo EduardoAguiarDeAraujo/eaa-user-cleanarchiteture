@@ -3,6 +3,8 @@ package br.eng.eaa.adapter.controller;
 import br.eng.eaa.adapter.gateway.IUserGatewayStub;
 import br.eng.eaa.application.model.UserRequest;
 import br.eng.eaa.application.model.UserResponse;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,8 +15,19 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class UserControllerTest {
 
-    IUserGatewayStub gateway = new IUserGatewayStub();
-    UserController userController = new UserController(gateway);
+    private UserController userController;
+
+    @BeforeEach
+    public void setUp() {
+        IUserGatewayStub gateway = new IUserGatewayStub();
+        userController = new UserController(gateway);
+
+    }
+
+    @AfterEach
+    void tearDown() {
+        userController = null;
+    }
 
     @Test
     @DisplayName("Deve salvar um usuário")

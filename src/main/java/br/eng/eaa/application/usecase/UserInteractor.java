@@ -28,14 +28,14 @@ public class UserInteractor implements UserInput {
     public UserResponse save(UserRequest userRequest) {
         User user = new User(userRequest.getName(), userRequest.getPassword());
         User userSaved = userGateway.save(user);
-        return userOutput.execute(user);
+        return userOutput.execute(userSaved);
     }
 
     @Override
     public UserResponse update(UserRequest userRequest) {
         User user = new User(userRequest.getId(), userRequest.getName());
         User userSaved = userGateway.update(user);
-        return userOutput.execute(user);
+        return userOutput.execute(userSaved);
     }
 
     @Override
@@ -52,7 +52,6 @@ public class UserInteractor implements UserInput {
 
     @Override
     public Boolean delete(UUID id) {
-        Boolean isUserDelete = userGateway.delete(id);
-        return isUserDelete;
+        return userGateway.delete(id);
     }
 }

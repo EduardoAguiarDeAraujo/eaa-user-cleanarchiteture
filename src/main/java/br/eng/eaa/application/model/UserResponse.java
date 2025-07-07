@@ -8,6 +8,12 @@ public class UserResponse {
     private String name;
 
     public UserResponse(UUID id, String name) {
+        if (id == null) {
+            throw new IllegalArgumentException("ID cannot be null");
+        }
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name is empty or null");
+        }
         this.id = id;
         this.name = name;
     }
