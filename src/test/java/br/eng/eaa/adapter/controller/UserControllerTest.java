@@ -67,4 +67,13 @@ public class UserControllerTest {
         assertEquals(true, isDeleted);
         System.out.printf("Usuário excluído: %s", isDeleted);
     }
+
+    @Test
+    @DisplayName("Deve listar todos os usuários.")
+    public void findAll() {
+        var users = userController.findAll();
+        assertNotNull(users);
+        assertEquals(3, users.size());
+        users.forEach(user -> System.out.printf("ID: %s - %s%n", user.getId(), user.getName()));
+    }
 }

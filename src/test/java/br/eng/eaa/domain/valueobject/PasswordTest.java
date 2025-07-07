@@ -3,8 +3,7 @@ package br.eng.eaa.domain.valueobject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PasswordTest {
 
@@ -53,4 +52,38 @@ public class PasswordTest {
         String senha = "MinhaSenhaForte1";
         assertThrows(IllegalArgumentException.class, () -> new Password(senha));
     }
+    @Test
+    @DisplayName("Deve retornar false para senha sem caractere especial")
+    void shouldReturnFalseForNoSpecialCharacter() {
+        String senha = "MinhaSenhaForte1";
+        assertThrows(IllegalArgumentException.class, () -> new Password(senha));
+    }
+    @Test
+    @DisplayName("Deve retornar false para senha sem número")
+    void shouldReturnFalseForNoNumber() {
+        String senha = "MinhaSenhaForte!";
+        assertThrows(IllegalArgumentException.class, () -> new Password(senha));
+    }
+    @Test
+    @DisplayName("Deve retornar IllegalArgumentException para senha nula")
+    void shouldReturnFalseForNullPassword() {
+        String senha = null;
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Password(senha));
+        assertEquals("Senha inválida, tente novamente!", thrown.getMessage());
+    }
+    @Test
+    @DisplayName("Deve retornar IllegalArgumentException para senha vazia")
+    void shouldReturnFalseForEmptyPassword() {
+        String senha = "";
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Password(senha));
+        assertEquals("Senha inválida, tente novamente!", thrown.getMessage());
+    }
+    @Test
+    @DisplayName("Deve retornar IllegalArgumentException para senha em branco")
+    void shouldReturnFalseForBlankPassword() {
+        String senha = " ";
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> new Password(senha));
+        assertEquals("Senha inválida, tente novamente!", thrown.getMessage());
+    }
+
 }

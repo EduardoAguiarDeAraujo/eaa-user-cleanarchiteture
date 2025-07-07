@@ -5,29 +5,27 @@ import java.util.regex.Pattern;
 
 public class Password {
 
-    private String password;
+    private String value;
 
     public Password(String password){
         if (password == null){
             throw new IllegalArgumentException("Senha inválida, tente novamente!");
         }
-        if(!isValid(password) || password.isEmpty())  {
+        if(!isValid(password))  {
             throw new IllegalArgumentException("Senha inválida, tente novamente!");
         }
-        this.password = password;
+        if(password.isEmpty())  {
+            throw new IllegalArgumentException("Senha inválida, tente novamente!");
+        }
+        this.value = password;
     }
 
-    /**
-     * Valida uma senha com as seguintes regras:
-     * - Mínimo de 8 caracteres.
-     * - Contém pelo menos uma letra maiúscula.
-     * - Contém pelo menos uma letra minúscula.
-     * - Contém pelo menos um número.
-     * - Contém pelo menos um caractere especial (!@#$%^&*()_+-=[]{}|;:',.<>?).
-     */
+    public String getValue() {
+        return value;
+    }
+
     private boolean isValid(String password){
 
-        // Mínimo de 8 caracteres
         if (password.length() < 8) {
             return false;
         }
@@ -45,24 +43,21 @@ public class Password {
         }
         // Pelo menos um número
         Pattern digitPattern = Pattern.compile(".*[\\d].*");
-//        Pattern digitPattern = Pattern.compile(".*[0-9].*");
         Matcher digitMatcher = digitPattern.matcher(password);
         if (!digitMatcher.matches()) {
             return false;
         }
-        // Pelo menos um caractere especial.
-        // Os caracteres especiais são escapados com \\ para que sejam interpretados literalmente.
+        // Pelo menos um caractere especial.Os caracteres especiais são escapados com \\ para que sejam interpretados literalmente.
         Pattern specialCharPattern = Pattern.compile(".*[!@#$%^&*()_+\\-=\\[\\]\\{}|;:'\",.<>/?].*");
         Matcher specialCharMatcher = specialCharPattern.matcher(password);
         if (!specialCharMatcher.matches()) {
             return false;
         }
-        // Se todas as regras forem atendidas, a senha é válida
         return true;
     }
 
     @Override
     public String toString() {
-        return this.password;
+        return this.value;
     }
 }
